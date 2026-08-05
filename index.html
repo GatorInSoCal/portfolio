@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matthew — AI tools for small businesses</title>
+<meta name="description" content="I build AI chatbots, document processing tools, landing pages, and no-code apps for small businesses. Everything here is live and clickable.">
+<meta property="og:title" content="Matthew — AI tools for small businesses">
+<meta property="og:description" content="Live demos: AI receptionist, document extractor, coloring-page product page, and more.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101519;
+  --paper:#F1F3F6;
+  --surface:#FFFFFF;
+  --rule:#DDE2E8;
+  --muted:#5F6B78;
+
+  /* palette sampled from the projects themselves */
+  --c-doodle:#F37A5A;
+  --c-mira:#2A6FDB;
+  --c-extract:#1F5E8C;
+  --c-brutal:#E23B2E;
+  --c-hub:#6C5CE7;
+  --c-workout:#1B9E76;
+
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --shadow:0 1px 2px rgba(16,21,25,.04), 0 12px 28px -16px rgba(16,21,25,.25);
+  --maxw:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--c-mira);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+.label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:10px;margin:0 0 18px;
+}
+.label::before{content:"";width:26px;height:1px;background:currentColor;flex:none}
+
+/* ---------- header ---------- */
+header{
+  position:sticky;top:0;z-index:60;background:rgba(241,243,246,.88);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);
+}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}
+.mark{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;text-decoration:none}
+.mark i{font-style:normal;color:var(--c-doodle)}
+nav{display:flex;gap:4px}
+nav a{
+  font-size:14px;text-decoration:none;color:var(--muted);padding:7px 11px;border-radius:7px;
+  transition:color .15s,background .15s;
+}
+nav a:hover{color:var(--ink);background:rgba(16,21,25,.05)}
+@media (max-width:640px){nav a:not(.hire){display:none}}
+nav a.hire{background:var(--ink);color:#fff;font-weight:600}
+nav a.hire:hover{background:#000}
+
+/* ---------- hero ---------- */
+.hero{padding:74px 0 56px;border-bottom:1px solid var(--rule)}
+.hero h1{
+  font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(38px,7vw,76px);margin:0 0 22px;max-width:15ch;
+}
+.hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.hero h1 em::after{
+  content:"";position:absolute;left:0;right:0;bottom:.08em;height:.16em;
+  background:var(--c-doodle);opacity:.85;z-index:-1;
+}
+.hero p{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch;margin:0 0 30px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:11px;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:600;font-size:15px;
+  padding:13px 24px;border-radius:9px;border:1px solid var(--ink);transition:transform .14s,background .14s;
+}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost:hover{background:rgba(16,21,25,.05)}
+.stat-row{
+  display:flex;flex-wrap:wrap;gap:28px;margin-top:42px;padding-top:24px;border-top:1px solid var(--rule);
+}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em}
+.stat span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- sections ---------- */
+section{padding:66px 0;border-bottom:1px solid var(--rule)}
+.sec-head{margin-bottom:30px}
+.sec-head h2{
+  font-family:var(--display);font-weight:800;letter-spacing:-.028em;line-height:1.08;
+  font-size:clamp(27px,4vw,40px);margin:0 0 10px;
+}
+.sec-head p{color:var(--muted);margin:0;max-width:60ch}
+
+/* ---------- work grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:940px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
+
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column;text-decoration:none;box-shadow:var(--shadow);
+  transition:transform .18s cubic-bezier(.2,.7,.3,1),border-color .18s,box-shadow .18s;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 1px 2px rgba(16,21,25,.05),0 22px 44px -20px rgba(16,21,25,.35)}
+.viz{
+  height:152px;background:color-mix(in srgb,var(--accent) 8%,#fff);
+  border-bottom:1px solid var(--rule);display:block;position:relative;overflow:hidden;
+}
+.viz svg{width:100%;height:100%;display:block}
+.card-body{padding:16px 17px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card h3{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.015em;margin:0}
+.card p{margin:0;font-size:14.5px;color:var(--muted);flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:5px;background:color-mix(in srgb,var(--accent) 12%,#fff);
+  color:color-mix(in srgb,var(--accent) 78%,#000);
+}
+.open{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--accent);
+  display:inline-flex;align-items:center;gap:6px;margin-top:2px;font-weight:500;
+}
+.card:hover .open .arw{transform:translateX(4px)}
+.arw{transition:transform .18s;display:inline-block}
+
+/* ---------- media grids ---------- */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:940px){.mgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.mgrid{grid-template-columns:1fr}}
+.tile{
+  position:relative;border-radius:12px;overflow:hidden;background:#0b0e11;border:1px solid var(--rule);
+  aspect-ratio:16/9;cursor:pointer;padding:0;display:block;width:100%;
+}
+.tile video,.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:22px 13px 10px;
+  background:linear-gradient(transparent,rgba(6,9,12,.82));
+  color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;
+  text-align:left;pointer-events:none;
+}
+.play{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+  transition:opacity .2s;
+}
+.play span{
+  width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.9);
+  display:flex;align-items:center;justify-content:center;
+}
+.play span::after{
+  content:"";border-left:13px solid var(--ink);border-top:8px solid transparent;
+  border-bottom:8px solid transparent;margin-left:4px;
+}
+.tile:hover .play{opacity:0}
+.stills .tile{aspect-ratio:4/3;background:#fff}
+
+/* ---------- services ---------- */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:880px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.svc{grid-template-columns:1fr}}
+.svc div{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:18px}
+.svc h4{font-family:var(--display);font-weight:700;font-size:16.5px;margin:0 0 6px;letter-spacing:-.01em}
+.svc p{margin:0;font-size:14px;color:var(--muted)}
+
+/* ---------- contact ---------- */
+#contact{border-bottom:0}
+.cta{
+  background:var(--ink);color:#fff;border-radius:18px;padding:clamp(30px,5vw,52px);
+  display:flex;flex-wrap:wrap;gap:26px;align-items:center;justify-content:space-between;
+}
+.cta h2{font-family:var(--display);font-weight:800;font-size:clamp(25px,3.6vw,38px);letter-spacing:-.028em;margin:0 0 9px;line-height:1.1}
+.cta p{margin:0;color:#A9B4C0;max-width:44ch}
+.cta .btn{border-color:#fff}
+.cta .btn.solid{background:#fff;color:var(--ink)}
+.cta .btn.ghost{color:#fff}
+.cta .btn.ghost:hover{background:rgba(255,255,255,.12)}
+.cta-actions{display:flex;flex-wrap:wrap;gap:11px}
+
+footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+
+/* ---------- lightbox ---------- */
+#lb{
+  position:fixed;inset:0;z-index:200;background:rgba(8,11,14,.94);display:none;
+  align-items:center;justify-content:center;padding:24px;
+}
+#lb.on{display:flex}
+#lb video,#lb img{max-width:100%;max-height:86vh;border-radius:12px;display:block}
+#lb button{
+  position:absolute;top:18px;right:20px;background:rgba(255,255,255,.12);color:#fff;border:0;
+  width:40px;height:40px;border-radius:50%;font-size:21px;cursor:pointer;line-height:1;
+}
+#lb button:hover{background:rgba(255,255,255,.25)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="mark" href="#top">Matthew<i>.</i></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#motion">Motion</a>
+      <a href="#services">Services</a>
+      <a href="#contact" class="hire">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="wrap hero">
+    <h1>I build AI tools that <em>small businesses</em> actually use.</h1>
+    <p>Chatbots that answer the phone, tools that read your paperwork, apps that replace a spreadsheet, and landing pages that sell. Everything below is live and clickable — no mockups, no screenshots.</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#work">See the work <span class="arw">→</span></a>
+      <a class="btn ghost" href="#contact">Start a project</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><b>6</b><span>Live demos</span></div>
+      <div class="stat"><b>18</b><span>AI stills &amp; clips</span></div>
+      <div class="stat"><b>100%</b><span>Built by me</span></div>
+      <div class="stat"><b>Same week</b><span>Typical turnaround</span></div>
+    </div>
+  </div>
+
+  <!-- ================= WORK ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Live demos</p>
+        <h2>Click anything. It all works.</h2>
+        <p>Six things I built end to end — the interface, the logic, and the deployment. Each one opens in a new tab.</p>
+      </div>
+
+      <div class="grid">
+
+        <!-- Mira -->
+        <a class="card" style="--accent:var(--c-mira)" href="https://gatorinsocal.github.io/mira/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <rect x="26" y="26" width="150" height="34" rx="17" fill="#fff" stroke="var(--c-mira)" stroke-opacity=".3"/>
+            <circle cx="45" cy="43" r="7" fill="var(--c-mira)"/>
+            <rect x="60" y="37" width="88" height="5" rx="2.5" fill="var(--c-mira)" opacity=".45"/>
+            <rect x="60" y="47" width="56" height="5" rx="2.5" fill="var(--c-mira)" opacity=".25"/>
+            <rect x="118" y="76" width="156" height="42" rx="17" fill="var(--c-mira)"/>
+            <rect x="134" y="88" width="104" height="5" rx="2.5" fill="#fff" opacity=".85"/>
+            <rect x="134" y="100" width="68" height="5" rx="2.5" fill="#fff" opacity=".55"/>
+            <circle cx="41" cy="104" r="4" fill="var(--c-mira)" opacity=".55"/>
+            <circle cx="55" cy="104" r="4" fill="var(--c-mira)" opacity=".38"/>
+            <circle cx="69" cy="104" r="4" fill="var(--c-mira)" opacity=".22"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>Mira — AI receptionist</h3>
+            <p>A product page for an AI phone agent, with a working chat demo you can talk to. Switch between four sample businesses and it answers in each one's voice.</p>
+            <div class="tags"><span class="tag">Chatbot</span><span class="tag">Landing page</span><span class="tag">Product design</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+        <!-- Extractor -->
+        <a class="card" style="--accent:var(--c-extract)" href="https://gatorinsocal.github.io/extractor/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <rect x="24" y="18" width="118" height="118" rx="8" fill="#fff" stroke="var(--c-extract)" stroke-opacity=".25"/>
+            <rect x="38" y="34" width="76" height="5" rx="2.5" fill="var(--c-extract)" opacity=".2"/>
+            <rect x="38" y="50" width="90" height="7" rx="3" fill="#D8F24B"/>
+            <rect x="38" y="68" width="60" height="5" rx="2.5" fill="var(--c-extract)" opacity=".2"/>
+            <rect x="38" y="84" width="72" height="7" rx="3" fill="#D8F24B"/>
+            <rect x="38" y="102" width="84" height="5" rx="2.5" fill="var(--c-extract)" opacity=".2"/>
+            <rect x="38" y="116" width="48" height="5" rx="2.5" fill="var(--c-extract)" opacity=".2"/>
+            <path d="M148 56 h22" stroke="var(--c-extract)" stroke-width="1.5" stroke-dasharray="3 3" opacity=".5"/>
+            <path d="M148 90 h22" stroke="var(--c-extract)" stroke-width="1.5" stroke-dasharray="3 3" opacity=".5"/>
+            <rect x="176" y="42" width="100" height="28" rx="6" fill="var(--c-extract)"/>
+            <rect x="186" y="52" width="52" height="4" rx="2" fill="#fff" opacity=".5"/>
+            <rect x="186" y="60" width="72" height="5" rx="2.5" fill="#fff"/>
+            <rect x="176" y="78" width="100" height="28" rx="6" fill="var(--c-extract)" opacity=".8"/>
+            <rect x="186" y="88" width="42" height="4" rx="2" fill="#fff" opacity=".5"/>
+            <rect x="186" y="96" width="66" height="5" rx="2.5" fill="#fff"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>Document field extractor</h3>
+            <p>Paste a contract, invoice, or purchase order and it pulls out 19 fields — parties, dates, totals, terms — and shows you exactly where each value came from.</p>
+            <div class="tags"><span class="tag">Document AI</span><span class="tag">Data extraction</span><span class="tag">Tooling</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+        <!-- DoodleUp -->
+        <a class="card" style="--accent:var(--c-doodle)" href="https://gatorinsocal.github.io/doodleup/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <defs><clipPath id="lhalf"><rect x="34" y="20" width="106" height="112"/></clipPath></defs>
+            <rect x="34" y="20" width="232" height="112" rx="10" fill="#fff" stroke="var(--c-doodle)" stroke-opacity=".3"/>
+            <g clip-path="url(#lhalf)" opacity=".5">
+              <circle cx="88" cy="60" r="26" fill="var(--c-doodle)" opacity=".55"/>
+              <ellipse cx="88" cy="116" rx="44" ry="30" fill="var(--c-doodle)" opacity=".38"/>
+            </g>
+            <g fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round">
+              <circle cx="212" cy="60" r="26"/>
+              <ellipse cx="212" cy="116" rx="44" ry="30"/>
+              <circle cx="202" cy="55" r="3.2" fill="var(--ink)"/>
+              <circle cx="223" cy="55" r="3.2" fill="var(--ink)"/>
+              <path d="M204 68 q8 6 16 0"/>
+            </g>
+            <rect x="146" y="20" width="2" height="112" fill="var(--c-doodle)"/>
+            <circle cx="147" cy="76" r="11" fill="#fff" stroke="var(--c-doodle)" stroke-width="1.6"/>
+            <path d="M143 76 h8 M147 72 l-4 4 4 4" stroke="var(--c-doodle)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>DoodleUp — photos to coloring pages</h3>
+            <p>A full product launch page with a working before/after studio. Drag the slider to reveal the line art, or drop in your own photo and watch it convert in the browser.</p>
+            <div class="tags"><span class="tag">Landing page</span><span class="tag">Image processing</span><span class="tag">Interactive</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+        <!-- Hub -->
+        <a class="card" style="--accent:var(--c-hub)" href="https://gatorinsocal.github.io/hubdemo/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <rect x="62" y="20" width="176" height="46" rx="10" fill="#fff" stroke="var(--c-hub)" stroke-opacity=".25"/>
+            <rect x="76" y="34" width="70" height="5" rx="2.5" fill="var(--c-hub)" opacity=".3"/>
+            <rect x="76" y="46" width="112" height="5" rx="2.5" fill="var(--c-hub)" opacity=".16"/>
+            <rect x="50" y="54" width="200" height="50" rx="10" fill="#fff" stroke="var(--c-hub)" stroke-opacity=".35"/>
+            <circle cx="70" cy="79" r="8" fill="var(--c-hub)" opacity=".25"/>
+            <rect x="88" y="70" width="86" height="5" rx="2.5" fill="var(--c-hub)" opacity=".45"/>
+            <rect x="88" y="82" width="132" height="5" rx="2.5" fill="var(--c-hub)" opacity=".2"/>
+            <rect x="38" y="92" width="224" height="48" rx="10" fill="var(--c-hub)"/>
+            <rect x="58" y="106" width="14" height="14" rx="4" fill="#fff" opacity=".9"/>
+            <path d="M61.5 113 l3 3 5.5-6" stroke="var(--c-hub)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <rect x="84" y="106" width="104" height="6" rx="3" fill="#fff" opacity=".9"/>
+            <rect x="84" y="118" width="62" height="5" rx="2.5" fill="#fff" opacity=".5"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>Hub — notes, tasks &amp; ideas</h3>
+            <p>One app replacing three. Rich cards with checklists, photos, emoji and files, plus search, tags, favorites, dark mode, and offline support. Installs to a phone home screen.</p>
+            <div class="tags"><span class="tag">Web app</span><span class="tag">PWA</span><span class="tag">No-code client</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+        <!-- Workouts -->
+        <a class="card" style="--accent:var(--c-workout)" href="https://gatorinsocal.github.io/workouts/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <g fill="var(--c-workout)">
+              <rect x="34" y="96" width="34" height="34" rx="7" opacity=".9"/>
+              <rect x="80" y="80" width="34" height="50" rx="7" opacity=".75"/>
+              <rect x="126" y="58" width="34" height="72" rx="7" opacity=".6"/>
+              <rect x="172" y="86" width="34" height="44" rx="7" opacity=".45"/>
+              <rect x="218" y="68" width="34" height="62" rx="7" opacity=".3"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--c-workout)" opacity=".8" text-anchor="middle">
+              <text x="51" y="146">M</text><text x="97" y="146">T</text><text x="143" y="146">W</text>
+              <text x="189" y="146">T</text><text x="235" y="146">F</text>
+            </g>
+            <circle cx="143" cy="34" r="13" fill="none" stroke="var(--c-workout)" stroke-width="2.4"/>
+            <path d="M137 34 h12 M143 28 v12" stroke="var(--c-workout)" stroke-width="2.4" stroke-linecap="round"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>Weekly gym plan generator</h3>
+            <p>A seeded planner that locks a routine for the whole week, then reshuffles every Monday. Cardio, five lifting slots per day, and a no-equipment alternative for each.</p>
+            <div class="tags"><span class="tag">Web app</span><span class="tag">Algorithmic</span><span class="tag">Zero backend</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+        <!-- Brutal Truth -->
+        <a class="card" style="--accent:var(--c-brutal)" href="https://gatorinsocal.github.io/brutal-truth/" target="_blank" rel="noopener">
+          <div class="viz"><svg viewBox="0 0 300 152" aria-hidden="true">
+            <rect x="24" y="18" width="252" height="116" rx="10" fill="#14161A"/>
+            <text x="46" y="74" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="34" fill="#fff" letter-spacing="-1">BRUTAL</text>
+            <text x="46" y="106" font-family="Bricolage Grotesque, sans-serif" font-weight="800" font-size="34" fill="var(--c-brutal)" letter-spacing="-1">TRUTH</text>
+            <rect x="46" y="116" width="52" height="4" rx="2" fill="var(--c-brutal)"/>
+            <rect x="236" y="34" width="18" height="18" rx="4" fill="var(--c-brutal)" opacity=".9"/>
+          </svg></div>
+          <div class="card-body">
+            <h3>Brutal Truth</h3>
+            <p>A daily accountability app with a deck of 127 unfiltered truths across twelve categories. Save the ones that land, share them, install it to your home screen.</p>
+            <div class="tags"><span class="tag">Web app</span><span class="tag">PWA</span><span class="tag">Brand design</span></div>
+            <span class="open">Open demo <span class="arw">→</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MOTION ================= -->
+  <section id="motion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">AI video</p>
+        <h2>Motion, generated and graded.</h2>
+        <p>Commercial B-roll produced with AI video tools and finished for delivery — product, food, hospitality, real estate, corporate, and cinematic. Tap any clip to play it full size.</p>
+      </div>
+      <div class="mgrid" id="reel"></div>
+    </div>
+  </section>
+
+  <!-- ================= STILLS ================= -->
+  <section id="stills" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">AI imagery</p>
+        <h2>Stills built to spec.</h2>
+        <p>Product shots, brand imagery, and campaign visuals generated and retouched for commercial use. Tap to enlarge.</p>
+      </div>
+      <div class="mgrid stills" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">What I do</p>
+        <h2>Hire me for any of this.</h2>
+      </div>
+      <div class="svc">
+        <div><h4>AI chatbots &amp; receptionists</h4><p>Agents that answer questions, capture leads, and book appointments around the clock — in your business's voice.</p></div>
+        <div><h4>Document processing</h4><p>Turn contracts, invoices, and forms into structured data you can actually use, instead of retyping them.</p></div>
+        <div><h4>Landing pages</h4><p>Fast, responsive pages built to convert, with interactive demos when the product deserves one.</p></div>
+        <div><h4>Custom web apps</h4><p>Lightweight tools that replace a messy spreadsheet. Installable, offline-capable, and cheap to run.</p></div>
+        <div><h4>AI image &amp; video</h4><p>Commercial stills and B-roll generated, edited, and delivered ready to publish.</p></div>
+        <div><h4>AI strategy</h4><p>An honest read on where AI fits your business — and where it doesn't. I'll tell you what's not worth building.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Tell me what's slowing you down.</h2>
+          <p>Describe the problem in a sentence or two and I'll tell you honestly whether I can help, what it would take, and what it would cost.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn solid" id="primary-cta" href="#" target="_blank" rel="noopener">Hire me on Fiverr <span class="arw">→</span></a>
+          <a class="btn ghost" id="email-cta" href="#">Email me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><footer>
+    <span>Built and deployed by Matthew.</span>
+    <span>Every demo on this page is live, not a screenshot.</span>
+  </footer></div>
+
+</main>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <button id="lb-x" aria-label="Close">×</button>
+  <div id="lb-slot"></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ══════════════════════════════════════════════════════════
+     EDIT THIS BLOCK — everything else takes care of itself.
+     ══════════════════════════════════════════════════════════ */
+  var CONFIG = {
+    fiverr: "https://www.fiverr.com/YOUR-USERNAME",   // ← your Fiverr profile URL
+    email:  "you@example.com",                        // ← your contact email
+
+    // Video clips. Files live in the /media folder next to this page.
+    videos: [
+      { file:"earbud-case",                caption:"Product — rotating hero" },
+      { file:"coffee-creamer",             caption:"Food & beverage — slow motion" },
+      { file:"neighborhood-cafe",          caption:"Hospitality — interior ambience" },
+      { file:"home-drone-shot",            caption:"Real estate — aerial reveal" },
+      { file:"man-typing",                 caption:"Corporate — office b-roll" },
+      { file:"street-at-night-after-rain", caption:"Cinematic — night exterior" }
+    ],
+
+    // Stills. Each needs two files in /media: "<name>.webp" (full) and "<name>-t.webp" (thumb).
+    images: [
+      { file:"luxury-watch-2",      caption:"Product — macro, dark set" },
+      { file:"sushi-1",             caption:"Food — editorial plating" },
+      { file:"luxury-home-1",       caption:"Interiors — coastal residence" },
+      { file:"ceo-1",               caption:"Corporate — executive portrait" },
+      { file:"luxury-watch-1",      caption:"Product — macro, bright set" },
+      { file:"sushi-2",             caption:"Food — restaurant spread" },
+      { file:"luxury-home-2",       caption:"Interiors — golden hour" },
+      { file:"kids-illustration-1", caption:"Illustration — children's book" },
+      { file:"mountain-top-3",      caption:"Landscape — alpine sunrise" },
+      { file:"fantasy-2",           caption:"Concept art — fantasy" },
+      { file:"futuristic-city-1",   caption:"Concept art — science fiction" },
+      { file:"surreal-2",           caption:"Surreal — conceptual" }
+    ]
+  };
+  /* ════════════════════════════════════════════════════════ */
+
+  var $ = function(s){ return document.querySelector(s); };
+
+  // contact links
+  $("#primary-cta").href = CONFIG.fiverr;
+  $("#email-cta").href = "mailto:" + CONFIG.email;
+
+  // video reel
+  var reel = $("#reel");
+  CONFIG.videos.forEach(function(v){
+    var fig = document.createElement("figure");
+    fig.className = "tile";
+    fig.style.margin = "0";
+    fig.setAttribute("role","button");
+    fig.setAttribute("tabindex","0");
+    fig.setAttribute("aria-label","Play " + v.caption);
+    fig.innerHTML =
+      '<video muted loop playsinline preload="none" poster="media/' + v.file + '.webp">' +
+        '<source src="media/' + v.file + '.mp4" type="video/mp4">' +
+      '</video>' +
+      '<div class="play"><span></span></div>' +
+      '<figcaption>' + v.caption + '</figcaption>';
+    var vid = fig.querySelector("video");
+    fig.addEventListener("mouseenter", function(){ vid.play().catch(function(){}); });
+    fig.addEventListener("mouseleave", function(){ vid.pause(); vid.currentTime = 0; });
+    fig.addEventListener("click", function(){ openLb("video", "media/" + v.file + ".mp4"); });
+    fig.addEventListener("keydown", function(e){
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLb("video", "media/" + v.file + ".mp4"); }
+    });
+    reel.appendChild(fig);
+  });
+
+  // still gallery (hidden until images are listed)
+  if(CONFIG.images.length){
+    var gal = $("#gallery");
+    $("#stills").hidden = false;
+    CONFIG.images.forEach(function(im){
+      var fig = document.createElement("figure");
+      fig.className = "tile";
+      fig.style.margin = "0";
+      fig.setAttribute("role","button");
+      fig.setAttribute("tabindex","0");
+      fig.setAttribute("aria-label","Enlarge " + (im.caption || "image"));
+      fig.innerHTML =
+        '<img src="media/' + im.file + '-t.webp" alt="' + (im.caption || "") + '" loading="lazy" decoding="async">' +
+        (im.caption ? '<figcaption>' + im.caption + '</figcaption>' : '');
+      var open = function(){ openLb("img", "media/" + im.file + ".webp"); };
+      fig.addEventListener("click", open);
+      fig.addEventListener("keydown", function(e){
+        if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); }
+      });
+      gal.appendChild(fig);
+    });
+  }
+
+  // lightbox
+  var lb = $("#lb"), slot = $("#lb-slot"), lastFocus = null;
+  function openLb(kind, src){
+    lastFocus = document.activeElement;
+    slot.innerHTML = kind === "video"
+      ? '<video src="' + src + '" controls autoplay loop playsinline></video>'
+      : '<img src="' + src + '" alt="">';
+    lb.classList.add("on");
+    document.body.style.overflow = "hidden";
+    $("#lb-x").focus();
+  }
+  function closeLb(){
+    lb.classList.remove("on");
+    slot.innerHTML = "";
+    document.body.style.overflow = "";
+    if(lastFocus) lastFocus.focus();
+  }
+  $("#lb-x").addEventListener("click", closeLb);
+  lb.addEventListener("click", function(e){ if(e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && lb.classList.contains("on")) closeLb(); });
+})();
+</script>
+</body>
+</html>
