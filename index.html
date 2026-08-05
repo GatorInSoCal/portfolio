@@ -475,7 +475,7 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
     fiverr: "https://www.fiverr.com/YOUR-USERNAME",   // ← your Fiverr profile URL
     email:  "you@example.com",                        // ← your contact email
 
-    // Video clips. Files live in the /media folder next to this page.
+    // Video clips. Files sit in the same folder as this page.
     videos: [
       { file:"earbud-case",                caption:"Product — rotating hero" },
       { file:"coffee-creamer",             caption:"Food & beverage — slow motion" },
@@ -485,7 +485,7 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
       { file:"street-at-night-after-rain", caption:"Cinematic — night exterior" }
     ],
 
-    // Stills. Each needs two files in /media: "<name>.webp" (full) and "<name>-t.webp" (thumb).
+    // Stills. Each needs two files: "<name>.webp" (full) and "<name>-t.webp" (thumb).
     images: [
       { file:"luxury-watch-2",      caption:"Product — macro, dark set" },
       { file:"sushi-1",             caption:"Food — editorial plating" },
@@ -519,17 +519,17 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
     fig.setAttribute("tabindex","0");
     fig.setAttribute("aria-label","Play " + v.caption);
     fig.innerHTML =
-      '<video muted loop playsinline preload="none" poster="media/' + v.file + '.webp">' +
-        '<source src="media/' + v.file + '.mp4" type="video/mp4">' +
+      '<video muted loop playsinline preload="none" poster="' + v.file + '.webp">' +
+        '<source src="' + v.file + '.mp4" type="video/mp4">' +
       '</video>' +
       '<div class="play"><span></span></div>' +
       '<figcaption>' + v.caption + '</figcaption>';
     var vid = fig.querySelector("video");
     fig.addEventListener("mouseenter", function(){ vid.play().catch(function(){}); });
     fig.addEventListener("mouseleave", function(){ vid.pause(); vid.currentTime = 0; });
-    fig.addEventListener("click", function(){ openLb("video", "media/" + v.file + ".mp4"); });
+    fig.addEventListener("click", function(){ openLb("video", v.file + ".mp4"); });
     fig.addEventListener("keydown", function(e){
-      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLb("video", "media/" + v.file + ".mp4"); }
+      if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openLb("video", v.file + ".mp4"); }
     });
     reel.appendChild(fig);
   });
@@ -546,9 +546,9 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
       fig.setAttribute("tabindex","0");
       fig.setAttribute("aria-label","Enlarge " + (im.caption || "image"));
       fig.innerHTML =
-        '<img src="media/' + im.file + '-t.webp" alt="' + (im.caption || "") + '" loading="lazy" decoding="async">' +
+        '<img src="' + im.file + '-t.webp" alt="' + (im.caption || "") + '" loading="lazy" decoding="async">' +
         (im.caption ? '<figcaption>' + im.caption + '</figcaption>' : '');
-      var open = function(){ openLb("img", "media/" + im.file + ".webp"); };
+      var open = function(){ openLb("img", im.file + ".webp"); };
       fig.addEventListener("click", open);
       fig.addEventListener("keydown", function(e){
         if(e.key === "Enter" || e.key === " "){ e.preventDefault(); open(); }
