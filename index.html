@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Matthew — AI tools for small businesses</title>
-<meta name="description" content="I build AI chatbots, document processing tools, landing pages, and no-code apps for small businesses. Everything here is live and clickable.">
-<meta property="og:title" content="Matthew — AI tools for small businesses">
-<meta property="og:description" content="Live demos: AI receptionist, document extractor, coloring-page product page, and more.">
+<title>Aliso Coast Studio | AI Creative + Development</title>
+<meta name="description" content="AI imagery, video, and interactive tools by Aliso Coast Studio.">
+<meta property="og:title" content="Aliso Coast Studio | AI Creative + Development">
+<meta property="og:description" content="Selected AI imagery, motion, and interactive development by Aliso Coast Studio.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,18 +203,36 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
   width:40px;height:40px;border-radius:50%;font-size:21px;cursor:pointer;line-height:1;
 }
 #lb button:hover{background:rgba(255,255,255,.25)}
+
+:root {
+  --ink:#f4f2ed;
+  --paper:#121212;
+  --surface:#1d1d1d;
+  --rule:#3c3a36;
+  --muted:#c5c0b7;
+}
+header { background:var(--paper); }
+nav a.hire, .btn.solid, .cta .btn.solid { color:var(--paper); background:var(--ink); }
+nav a.hire:hover { color:var(--paper); background:#d9d4ca; }
+.cta { background:var(--surface); border:1px solid var(--rule); color:var(--ink); }
+.cta p { color:var(--muted); }
+.hero .label { font-size:12px; margin-bottom:0; }
+@media (max-width:480px) { .bar { flex-wrap:wrap; gap:6px; padding-block:10px; } }
+.hero { display:grid; grid-template-columns: 1fr 1fr; align-items:center; gap:clamp(24px,5vw,72px); }
+.hero h1 { margin-top:12px; }
+.hero-image { display:block; width:100%; min-height:260px; aspect-ratio: 4 / 3; object-fit:cover; border-radius:8px; }
+@media (max-width:760px) { .hero { grid-template-columns:1fr; } .hero-image { min-height:0; } }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top">Matthew<i>.</i></a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#motion">Motion</a>
-      <a href="#services">Services</a>
-      <a href="#contact" class="hire">Hire me</a>
+    <a class="mark" href="#top">Aliso Coast Studio</a>
+    <nav aria-label="Main navigation">
+      <a href="#stills">Work</a>
+      <a href="#services">Studio</a>
+      <a href="#contact" class="hire">Contact</a>
     </nav>
   </div>
 </header>
@@ -222,26 +240,48 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
 <main id="top">
 
   <div class="wrap hero">
-    <h1>I build AI tools that <em>small businesses</em> actually use.</h1>
-    <p>Chatbots that answer the phone, tools that read your paperwork, apps that replace a spreadsheet, and landing pages that sell. Everything below is live and clickable — no mockups, no screenshots.</p>
-    <div class="hero-cta">
-      <a class="btn solid" href="#work">See the work <span class="arw">→</span></a>
-      <a class="btn ghost" href="#contact">Start a project</a>
+    <div>
+      <p class="label">AI Creative + Development Studio</p>
+      <h1>Imagination, without limits.</h1>
+      <p>AI imagery, short-form video, and interactive tools for brands and creators.</p>
+      <div class="hero-cta">
+        <a class="btn solid" href="#stills">Explore Work <span class="arw">→</span></a>
+        <a class="btn ghost" href="#contact">Get in Touch</a>
+      </div>
     </div>
-    <div class="stat-row">
-      <div class="stat"><b>6</b><span>Live demos</span></div>
-      <div class="stat"><b>18</b><span>AI stills &amp; clips</span></div>
-      <div class="stat"><b>100%</b><span>Built by me</span></div>
-      <div class="stat"><b>Same week</b><span>Typical turnaround</span></div>
-    </div>
+    <img class="hero-image" src="retro-diner-1.webp" alt="A neon-lit retro diner and a classic car at dusk" fetchpriority="high">
   </div>
+
+  <!-- ================= STILLS ================= -->
+  <section id="stills" hidden>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">AI imagery</p>
+        <h2>Selected imagery</h2>
+        <p>Product shots, brand imagery, and campaign visuals generated and retouched for commercial use. Tap to enlarge.</p>
+      </div>
+      <div class="mgrid stills" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ================= MOTION ================= -->
+  <section id="motion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">AI video</p>
+        <h2>Selected motion</h2>
+        <p>Commercial B-roll produced with AI video tools and finished for delivery — product, food, hospitality, real estate, corporate, and cinematic. Tap any clip to play it full size.</p>
+      </div>
+      <div class="mgrid" id="reel"></div>
+    </div>
+  </section>
 
   <!-- ================= WORK ================= -->
   <section id="work">
     <div class="wrap">
       <div class="sec-head">
         <p class="label">Live demos</p>
-        <h2>Click anything. It all works.</h2>
+        <h2>Interactive projects</h2>
         <p>Six things I built end to end — the interface, the logic, and the deployment. Each one opens in a new tab.</p>
       </div>
 
@@ -394,36 +434,13 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
     </div>
   </section>
 
-  <!-- ================= MOTION ================= -->
-  <section id="motion">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">AI video</p>
-        <h2>Motion, generated and graded.</h2>
-        <p>Commercial B-roll produced with AI video tools and finished for delivery — product, food, hospitality, real estate, corporate, and cinematic. Tap any clip to play it full size.</p>
-      </div>
-      <div class="mgrid" id="reel"></div>
-    </div>
-  </section>
-
-  <!-- ================= STILLS ================= -->
-  <section id="stills" hidden>
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">AI imagery</p>
-        <h2>Stills built to spec.</h2>
-        <p>Product shots, brand imagery, and campaign visuals generated and retouched for commercial use. Tap to enlarge.</p>
-      </div>
-      <div class="mgrid stills" id="gallery"></div>
-    </div>
-  </section>
-
   <!-- ================= SERVICES ================= -->
   <section id="services">
     <div class="wrap">
       <div class="sec-head">
         <p class="label">What I do</p>
-        <h2>Hire me for any of this.</h2>
+        <h2>About the studio</h2>
+        <p>Aliso Coast Studio is led by founder Matthew McLaughlin in Southern California.</p>
       </div>
       <div class="svc">
         <div><h4>AI chatbots &amp; receptionists</h4><p>Agents that answer questions, capture leads, and book appointments around the clock — in your business's voice.</p></div>
@@ -441,20 +458,19 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
     <div class="wrap">
       <div class="cta">
         <div>
-          <h2>Tell me what's slowing you down.</h2>
-          <p>Describe the problem in a sentence or two and I'll tell you honestly whether I can help, what it would take, and what it would cost.</p>
+          <h2>Let’s work together.</h2>
+          <p>Share what you’re making and what you need help with.</p>
         </div>
         <div class="cta-actions">
-          <a class="btn solid" id="primary-cta" href="#" target="_blank" rel="noopener">Hire me on Fiverr <span class="arw">→</span></a>
-          <a class="btn ghost" id="email-cta" href="#">Email me</a>
+          <a class="btn solid" href="https://gumroad.com/alisocoaststudio">Visit Aliso Coast Studio <span class="arw">→</span></a>
         </div>
       </div>
     </div>
   </section>
 
   <div class="wrap"><footer>
-    <span>Built and deployed by Matthew.</span>
-    <span>Every demo on this page is live, not a screenshot.</span>
+    <span>Aliso Coast Studio</span>
+    <span>Southern California</span>
   </footer></div>
 
 </main>
@@ -472,57 +488,30 @@ footer{padding:26px 0 40px;color:var(--muted);font-size:13.5px;display:flex;flex
      EDIT THIS BLOCK — everything else takes care of itself.
      ══════════════════════════════════════════════════════════ */
   var CONFIG = {
-    fiverr: "https://www.fiverr.com/YOUR-USERNAME",   // ← your Fiverr profile URL
-    email:  "you@example.com",                        // ← your contact email
 
     // Video clips. Files sit in the same folder as this page.
     videos: [
-      { file:"camera-technique-timelapse-1", caption:"Camera technique — time-lapse, skyline" },
-      { file:"pancake-flip-1",               caption:"Food & beverage — extreme close-up" },
-      { file:"german-village-christmas-2",   caption:"Cinematic — holiday market" },
-      { file:"seedance-beach-vibes-1",       caption:"Lifestyle — retro beach vibe" },
-      { file:"neighborhood-cafe",          caption:"Hospitality — interior ambience" }, 
-      { file:"camera-technique-rackfocus-1", caption:"Camera technique — rack focus, product" },
-      { file:"earbud-case",                caption:"Product — rotating hero" },
       { file:"coffee-creamer",             caption:"Food & beverage — slow motion" },
-      { file:"bar-drinking-1", caption:"Lifestyle — bar, beverage" },
-      { file:"home-drone-shot",            caption:"Real estate — aerial reveal" },
-      { file:"man-typing",                 caption:"Corporate — office b-roll" },
+      { file:"earbud-case",                caption:"Product — rotating hero" },
+      { file:"seedance-beach-vibes-1",       caption:"Lifestyle — retro beach vibe" },
+      { file:"german-village-christmas-2",   caption:"Cinematic — holiday market" },
       { file:"street-at-night-after-rain", caption:"Cinematic — night exterior" },
+      { file:"camera-technique-rackfocus-1", caption:"Camera technique — rack focus, product" },
     ],
 
     // Stills. Each needs two files: "<name>.webp" (full) and "<name>-t.webp" (thumb).
     images: [
-      { file:"steampunk-phone-1",     caption:"Product — macro, steampunk concept" },
-      { file:"surfer-girl-portrait-1", caption:"Photography — portrait, golden hour" },
-      { file:"convenience-mirror-1",   caption:"Photography — creative perspective" },
-      { file:"beach-pier-1",           caption:"Landscape — coastal sunset" },
+      { file:"luxury-watch-1",         caption:"Product — watch campaign concept" },
+      { file:"steampunk-phone-1",   caption:"Product — steampunk concept" },
+      { file:"product-journal-1",   caption:"Product — still life" },
       { file:"diorama-city-1",         caption:"Concept art — miniature diorama, NYC" },
-      { file:"guitar-player-1",        caption:"Photography — live performance" },
-      { file:"blueprint-starship-1",   caption:"Concept art — technical blueprint" },
-      { file:"sushi-1",             caption:"Food — editorial plating" },
-      { file:"luxury-home-1",       caption:"Interiors — coastal residence" },
-      { file:"retro-diner-1",       caption:"Photography — retro diner, dusk" },
-      { file:"wildlife-owl-1",      caption:"Wildlife — action shot" },
-      { file:"ceo-1",               caption:"Corporate — executive portrait" },
-      { file:"sushi-2",             caption:"Food — restaurant spread" },
-      { file:"luxury-home-2",       caption:"Interiors — golden hour" },
       { file:"kids-illustration-1", caption:"Illustration — children's book" },
-      { file:"mountain-top-3",      caption:"Landscape — alpine sunrise" },
-      { file:"diorama-dive-bar-1",  caption:"Concept art — miniature diorama" },
-      { file:"product-journal-1",   caption:"Product — still life" }, 
-      { file:"fantasy-2",           caption:"Concept art — fantasy" },
-      { file:"futuristic-city-1",   caption:"Concept art — science fiction" },
-      { file:"surreal-2",           caption:"Surreal — conceptual" },
+      { file:"wildlife-owl-1",      caption:"Wildlife — action shot" },
     ]
   };
   /* ════════════════════════════════════════════════════════ */
 
   var $ = function(s){ return document.querySelector(s); };
-
-  // contact links
-  $("#primary-cta").href = CONFIG.fiverr;
-  $("#email-cta").href = "mailto:" + CONFIG.email;
 
   // video reel
   var reel = $("#reel");
