@@ -216,19 +216,42 @@ nav a.hire, .btn.solid, .cta .btn.solid { color:var(--paper); background:var(--i
 nav a.hire:hover { color:var(--paper); background:#d9d4ca; }
 .cta { background:var(--surface); border:1px solid var(--rule); color:var(--ink); }
 .cta p { color:var(--muted); }
-.hero .label { font-size:12px; margin-bottom:0; }
-@media (max-width:480px) { .bar { flex-wrap:wrap; gap:6px; padding-block:10px; } }
-.hero { display:grid; grid-template-columns: 1fr 1fr; align-items:center; gap:clamp(24px,5vw,72px); }
-.hero h1 { margin-top:12px; }
-.hero-image { display:block; width:100%; min-height:260px; aspect-ratio: 4 / 3; object-fit:cover; border-radius:8px; }
-@media (max-width:760px) { .hero { grid-template-columns:1fr; } .hero-image { min-height:0; } }
+html { scroll-behavior:smooth; }
+section { scroll-margin-top:84px; }
+.mark { display:inline-flex; align-items:center; gap:10px; }
+.mark img { width:44px; height:31px; object-fit:contain; }
+.hero { padding-block:20px 0; }
+.brand-stage {
+  position:relative; isolation:isolate; overflow:hidden; border:1px solid var(--rule);
+  display:grid; grid-template-columns:1.15fr 1fr; align-items:center;
+  border-radius:24px; background:#080807; min-height:clamp(440px,68vh,680px);
+}
+.brand-copy { z-index:1; padding:clamp(25px,5vw,76px); }
+.brand-copy .label { font-size:12px; margin-bottom:18px; }
+.brand-copy h1 { font-size:clamp(54px,7.5vw,116px); line-height:.91; letter-spacing:-.075em; margin:0 0 24px; }
+.brand-copy .hero-cta { margin:0; }
+.brand-motion { position:relative; display:grid; place-items:center; height:100%; overflow:hidden; background:radial-gradient(ellipse,#2c211a 0%,#080807 68%); }
+.brand-motion img { width:80%; max-width:520px; height:auto; }
+.brand-motion video { position:absolute; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0; transition:opacity .25s; }
+.brand-motion video.is-playing { opacity:1; }
+.feature-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:14px; }
+.feature { position:relative; display:block; overflow:hidden; border-radius:15px; background:var(--surface); }
+.feature img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; }
+.feature span { position:absolute; bottom:0; inset-inline:0; padding:35px 18px 14px; background:linear-gradient(transparent,#080807dc); font-size:14px; }
+@media (max-width:760px) {
+  .brand-stage { grid-template-columns:1fr; }
+  .brand-motion { grid-row:1; height:250px; }
+  .brand-motion img { max-width:250px; }
+}
+@media (max-width:480px) { .bar { flex-wrap:wrap; gap:6px; padding-block:10px; } .feature img { aspect-ratio:4/3; } }
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .brand-motion video { display:none; } }
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <a class="mark" href="#top">Aliso Coast Studio</a>
+    <a class="mark" href="#top"><img src="acs-logo.webp" alt="" width="44" height="31">Aliso Coast Studio</a>
     <nav aria-label="Main navigation">
       <a href="#stills">Work</a>
       <a href="#services">Studio</a>
@@ -240,16 +263,31 @@ nav a.hire:hover { color:var(--paper); background:#d9d4ca; }
 <main id="top">
 
   <div class="wrap hero">
-    <div>
-      <p class="label">AI Creative + Development Studio</p>
-      <h1>Imagination, without limits.</h1>
-      <p>AI imagery, short-form video, and interactive tools for brands and creators.</p>
-      <div class="hero-cta">
-        <a class="btn solid" href="#stills">Explore Work <span class="arw">→</span></a>
-        <a class="btn ghost" href="#contact">Get in Touch</a>
+    <div class="brand-stage">
+      <div class="brand-copy">
+        <p class="label">AI Creative + Development Studio</p>
+        <h1>Ideas without<br>limits.</h1>
+        <p>AI visuals. Films. Experiences. Applications.</p>
+        <div class="hero-cta">
+          <a class="btn solid" href="#stills">Explore Work <span class="arw">→</span></a>
+          <a class="btn ghost" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="brand-motion">
+        <img src="acs-logo.webp" alt="Aliso Coast Studio palm-tree logo">
+        <video id="brand-intro" muted playsinline preload="none" aria-hidden="true" data-src="acs-logo-motion.mp4"></video>
       </div>
     </div>
-    <img class="hero-image" src="retro-diner-1.webp" alt="A neon-lit retro diner and a classic car at dusk" fetchpriority="high">
+    <div class="feature-grid">
+      <a class="feature" href="#stills">
+        <img src="christmas-family-1980s.webp" alt="A family loading Christmas gifts into a station wagon" width="1500" height="1000">
+        <span>1980s Christmas Family · Imagery →</span>
+      </a>
+      <a class="feature" href="#motion">
+        <img src="hidden-world.webp" alt="A miniature surf scene inside a glass sphere" width="480" height="640">
+        <span>Hidden World · Motion →</span>
+      </a>
+    </div>
   </div>
 
   <!-- ================= STILLS ================= -->
@@ -491,27 +529,32 @@ nav a.hire:hover { color:var(--paper); background:#d9d4ca; }
 
     // Video clips. Files sit in the same folder as this page.
     videos: [
-      { file:"coffee-creamer",             caption:"Food & beverage — slow motion" },
-      { file:"earbud-case",                caption:"Product — rotating hero" },
-      { file:"seedance-beach-vibes-1",       caption:"Lifestyle — retro beach vibe" },
-      { file:"german-village-christmas-2",   caption:"Cinematic — holiday market" },
-      { file:"street-at-night-after-rain", caption:"Cinematic — night exterior" },
-      { file:"camera-technique-rackfocus-1", caption:"Camera technique — rack focus, product" },
+      { file:"hidden-world", caption:"Hidden World · Coastal fantasy" },
+      { file:"sunny-beach-days", caption:"Sunny Beach Days · Retro animation" },
+      { file:"coffee-creamer", caption:"Coffee Creamer · Food and beverage" },
+      { file:"earbud-case", caption:"Earbud Case · Product film" },
     ],
 
     // Stills. Each needs two files: "<name>.webp" (full) and "<name>-t.webp" (thumb).
     images: [
-      { file:"luxury-watch-1",         caption:"Product — watch campaign concept" },
-      { file:"steampunk-phone-1",   caption:"Product — steampunk concept" },
-      { file:"product-journal-1",   caption:"Product — still life" },
-      { file:"diorama-city-1",         caption:"Concept art — miniature diorama, NYC" },
-      { file:"kids-illustration-1", caption:"Illustration — children's book" },
-      { file:"wildlife-owl-1",      caption:"Wildlife — action shot" },
+      { file:"christmas-family-1980s", caption:"1980s Christmas Family · Period storytelling" },
+      { file:"retro-diner-1", caption:"Retro Diner · Cinematic environment" },
+      { file:"luxury-watch-1", caption:"Watch · Product campaign concept" },
+      { file:"diorama-city-1", caption:"New York City · Miniature diorama" },
+      { file:"kids-illustration-1", caption:"Children’s book illustration" },
+      { file:"wildlife-owl-1", caption:"Snowy Owl · Wildlife concept" },
     ]
   };
   /* ════════════════════════════════════════════════════════ */
 
   var $ = function(s){ return document.querySelector(s); };
+
+  var intro = $("#brand-intro");
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    intro.addEventListener("playing", function(){ intro.classList.add("is-playing"); });
+    intro.src = intro.dataset.src;
+    intro.play().catch(function(){ intro.classList.remove("is-playing"); });
+  }
 
   // video reel
   var reel = $("#reel");
